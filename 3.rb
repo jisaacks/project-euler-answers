@@ -7,9 +7,12 @@ require "prime"
 
 def highest_prime_facter(n)
   half = (n/2).round
-  facters = (1..half).select { |i| n % i == 0 }
-  primes = facters.select{ |i| Prime.prime? i }
-  primes.last
+  highest_prime = 1
+  Prime.each do |prime|
+    highest_prime = prime if n % prime == 0
+    break if prime * prime > half
+  end
+  highest_prime
 end
 
 puts highest_prime_facter(600851475143)
