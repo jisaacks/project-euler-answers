@@ -4,16 +4,6 @@
 # Find the sum of all the multiples of 3 or 5 below 1000.
 
 
-def multiple_of_3_or_5(n)
-  return true if n % 3 == 0
-  return true if n % 5 == 0
-  false
-end
-
-sum = 0
-
-(1..999).each do |i|
-  sum += i if multiple_of_3_or_5 i
-end
+sum = (1...1000).select{ |n| n % 3 == 0 || n % 5 == 0 }.reduce(:+)
 
 puts "The sum is: #{sum}"
